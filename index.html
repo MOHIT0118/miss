@@ -1,32 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>untoldcoding</title>
-    <link rel="stylesheet" href="Style3.css" />
-  </head>
-  <body>
-    <div class="envelope">
-      <div class="back"></div>
-      <div class="letter">
-        <div class="heart"></div>
-        <div class="text">
-          <p>
-            I want to say <br />
-            many thinks but, <br />
-            i can't express so i made <br />
-            this for you
-          </p>
-          <a href="new.html">Click here</a>
-        </div>
-      </div>
-      <div class="front"></div>
-      <div class="top"></div>
-      <div class="shadow"></div>
-      <div class="text1">
-        <h2>Hey! Listen I Have Something For You</h2>
-      </div>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sorry Nandini 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #ffd6e8, #ff9bc9);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px 25px;
+      border-radius: 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+      z-index: 10;
+    }
+
+    h1 {
+      color: #d81e5b;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #7a1a40;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #d81e5b;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 35px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(216, 30, 91, 0.6);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover {
+      background-color: #b31b4a;
+      transform: scale(1.05);
+    }
+    button:disabled {
+      background-color: #f7a1c3;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .response-message {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      color: #9c254d;
+      font-weight: 600;
+      min-height: 32px;
+    }
+
+    /* Floating stickers container */
+    .stickers {
+      pointer-events: none; /* so they don’t block clicks */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: visible;
+      z-index: 5;
+    }
+
+    /* Individual floating sticker styles */
+    .sticker {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.7;
+      animation-name: floatUp;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    /* Float up animation */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.7);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-15vh) rotate(360deg) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Hey Nandini,</h1>
+    <p>I'm really sorry for upsetting you. I never meant to hurt you at all.</p>
+    <p>You mean so much to me. Please forgive me? 🥺</p>
+    <button id="forgiveBtn">She Forgives 💕</button>
+    <div class="response-message" id="response"></div>
+  </div>
+
+  <div class="stickers" id="stickers"></div>
+
+  <script>
+    const responseEl = document.getElementById('response');
+    const forgiveBtn = document.getElementById('forgiveBtn');
+    const stickers = document.getElementById('stickers');
+
+    forgiveBtn.addEventListener('click', () => {
+      responseEl.textContent = "Thank you, Nandini! I promise to be better ❤️";
+      forgiveBtn.disabled = true;
+    });
+
+    // Emoji stickers to float
+    const emojis = ['❤️', '💖', '🥰', '😊', '🌸', '💕', '💫'];
+
+    function createSticker() {
+      const sticker = document.createElement('div');
+      sticker.classList.add('sticker');
+      sticker.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      sticker.style.left = Math.random() * 100 + 'vw';
+      sticker.style.animationDuration = (5 + Math.random() * 4) + 's';
+      sticker.style.fontSize = (18 + Math.random() * 20) + 'px';
+      stickers.appendChild(sticker);
+
+      setTimeout(() => {
+        sticker.remove();
+      }, 9000);
+    }
+
+    setInterval(createSticker, 500);
+  </script>
+
+</body>
 </html>
