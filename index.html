@@ -2,156 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sorry Nandini 💖</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #ffd6e8, #ff9bc9);
       font-family: 'Poppins', sans-serif;
-      background: url('https://i.imgur.com/SuC9r7y.jpg') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 20px;
-      position: relative;
+      align-items: center;
+      height: 100vh;
       overflow: hidden;
+      position: relative;
     }
 
     .container {
-      background: rgba(255, 240, 246, 0.95);
-      padding: 30px 20px;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
-      max-width: 420px;
-      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px 25px;
+      border-radius: 30px;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      position: relative;
-      z-index: 2;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+      z-index: 10;
     }
 
     h1 {
       color: #d81e5b;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
     }
 
     p {
-      color: #5a1030;
-      font-size: 1rem;
+      color: #7a1a40;
+      font-size: 1.1rem;
+      line-height: 1.5;
       margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .heart {
-      font-size: 2.5rem;
-      color: #d81e5b;
-      margin-bottom: 25px;
     }
 
     button {
-      background: #d81e5b;
+      background-color: #d81e5b;
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 12px 30px;
-      font-size: 1rem;
+      padding: 14px 35px;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(216, 30, 91, 0.5);
-      transition: 0.2s ease-in-out;
+      box-shadow: 0 5px 15px rgba(216, 30, 91, 0.6);
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
     button:hover {
       background-color: #b31b4a;
       transform: scale(1.05);
+    }
+    button:disabled {
+      background-color: #f7a1c3;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
     }
 
     .response-message {
       margin-top: 25px;
       font-size: 1.2rem;
-      color: #7b1e45;
+      color: #9c254d;
       font-weight: 600;
-      min-height: 30px;
+      min-height: 32px;
     }
 
-    /* Floating hearts animation */
-    .floating-heart {
+    /* Floating stickers container */
+    .stickers {
+      pointer-events: none; /* so they don’t block clicks */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: visible;
+      z-index: 5;
+    }
+
+    /* Individual floating sticker styles */
+    .sticker {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: pink;
-      animation: float 6s infinite ease-in-out;
-      border-radius: 50%;
-      opacity: 0.6;
+      font-size: 26px;
+      opacity: 0.7;
+      animation-name: floatUp;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
     }
 
-    @keyframes float {
+    /* Float up animation */
+    @keyframes floatUp {
       0% {
-        transform: translateY(100vh) scale(0.8);
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
+        transform: translateY(100vh) rotate(0deg) scale(0.7);
         opacity: 0;
       }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.7rem;
+      20% {
+        opacity: 0.8;
       }
-      p {
-        font-size: 0.95rem;
-      }
-      button {
-        font-size: 0.95rem;
-        padding: 10px 25px;
+      100% {
+        transform: translateY(-15vh) rotate(360deg) scale(1);
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>Hey Nandini,</h1>
-    <p>I’m really sorry for messing up. I never meant to hurt you, ever.</p>
-    <p>You mean the world to me. Please forgive me so we can smile again 🥺</p>
-    <div class="heart">❤️</div>
+    <p>I'm really sorry for upsetting you. I never meant to hurt you at all.</p>
+    <p>You mean so much to me. Please forgive me? 🥺</p>
     <button id="forgiveBtn">She Forgives 💕</button>
     <div class="response-message" id="response"></div>
   </div>
 
-  <!-- Floating heart elements -->
+  <div class="stickers" id="stickers"></div>
+
   <script>
     const responseEl = document.getElementById('response');
     const forgiveBtn = document.getElementById('forgiveBtn');
+    const stickers = document.getElementById('stickers');
 
     forgiveBtn.addEventListener('click', () => {
       responseEl.textContent = "Thank you, Nandini! I promise to be better ❤️";
       forgiveBtn.disabled = true;
-      forgiveBtn.style.cursor = "default";
     });
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("floating-heart");
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
-      document.body.appendChild(heart);
+    // Emoji stickers to float
+    const emojis = ['❤️', '💖', '🥰', '😊', '🌸', '💕', '💫'];
+
+    function createSticker() {
+      const sticker = document.createElement('div');
+      sticker.classList.add('sticker');
+      sticker.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      sticker.style.left = Math.random() * 100 + 'vw';
+      sticker.style.animationDuration = (5 + Math.random() * 4) + 's';
+      sticker.style.fontSize = (18 + Math.random() * 20) + 'px';
+      stickers.appendChild(sticker);
+
       setTimeout(() => {
-        heart.remove();
-      }, 8000);
+        sticker.remove();
+      }, 9000);
     }
 
-    setInterval(createHeart, 400);
+    setInterval(createSticker, 500);
   </script>
+
 </body>
 </html>
