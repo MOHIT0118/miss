@@ -2,98 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sorry, Nandini 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorry Nandini 💖</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    body {
-      background: #ffe4f0;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      color: #440025;
-      user-select: none;
-      padding: 20px;
+      padding: 0;
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://i.imgur.com/SuC9r7y.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
     .container {
-      background: #fff0f6;
-      padding: 40px 35px;
-      max-width: 420px;
+      background: rgba(255, 240, 246, 0.95);
+      padding: 30px 20px;
       border-radius: 25px;
       box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+      max-width: 420px;
+      width: 100%;
       text-align: center;
-      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
+
     h1 {
       color: #d81e5b;
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin-bottom: 25px;
-      letter-spacing: 1.2px;
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
+
     p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 35px;
       color: #5a1030;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
+
     .heart {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #d81e5b;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
     }
+
     button {
       background: #d81e5b;
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 14px 40px;
-      font-size: 1.1rem;
+      padding: 12px 30px;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(216, 30, 91, 0.5);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
+      box-shadow: 0 4px 12px rgba(216, 30, 91, 0.5);
+      transition: 0.2s ease-in-out;
     }
+
     button:hover {
       background-color: #b31b4a;
       transform: scale(1.05);
     }
+
     .response-message {
-      margin-top: 30px;
-      font-size: 1.3rem;
-      font-weight: 600;
+      margin-top: 25px;
+      font-size: 1.2rem;
       color: #7b1e45;
-      min-height: 28px;
+      font-weight: 600;
+      min-height: 30px;
+    }
+
+    /* Floating hearts animation */
+    .floating-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      animation: float 6s infinite ease-in-out;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+      button {
+        font-size: 0.95rem;
+        padding: 10px 25px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Hey Nandini,</h1>
-    <p>
-      I’m really sorry for messing up. I never wanted to upset you or anything. You mean a lot to me, and it sucks that I made you feel bad.
-    </p>
-    <p>
-      Can you forgive me? I just want to fix things and make you happy again. Whenever you wanna talk, I’m here.
-    </p>
+    <p>I’m really sorry for messing up. I never meant to hurt you, ever.</p>
+    <p>You mean the world to me. Please forgive me so we can smile again 🥺</p>
     <div class="heart">❤️</div>
     <button id="forgiveBtn">She Forgives 💕</button>
     <div class="response-message" id="response"></div>
   </div>
 
+  <!-- Floating heart elements -->
   <script>
     const responseEl = document.getElementById('response');
     const forgiveBtn = document.getElementById('forgiveBtn');
 
     forgiveBtn.addEventListener('click', () => {
-      responseEl.textContent = "Thank you, Nandini! I promise to do better ❤️";
+      responseEl.textContent = "Thank you, Nandini! I promise to be better ❤️";
       forgiveBtn.disabled = true;
       forgiveBtn.style.cursor = "default";
     });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 400);
   </script>
 </body>
 </html>
