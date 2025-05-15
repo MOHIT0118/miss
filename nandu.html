@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sorry, Nandini 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    body {
+      background: #ffe4f0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #440025;
+      user-select: none;
+      padding: 20px;
+    }
+    .container {
+      background: #fff0f6;
+      padding: 40px 35px;
+      max-width: 420px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    h1 {
+      color: #d81e5b;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      letter-spacing: 1.2px;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 35px;
+      color: #5a1030;
+    }
+    .heart {
+      font-size: 3rem;
+      color: #d81e5b;
+      margin-bottom: 35px;
+    }
+    button {
+      background: #d81e5b;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(216, 30, 91, 0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    button:hover {
+      background-color: #b31b4a;
+      transform: scale(1.05);
+    }
+    .response-message {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #7b1e45;
+      min-height: 28px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hey Nandini,</h1>
+    <p>
+      I’m really sorry for messing up. I never wanted to upset you or anything. You mean a lot to me, and it sucks that I made you feel bad.
+    </p>
+    <p>
+      Can you forgive me? I just want to fix things and make you happy again. Whenever you wanna talk, I’m here.
+    </p>
+    <div class="heart">❤️</div>
+    <button id="forgiveBtn">She Forgives 💕</button>
+    <div class="response-message" id="response"></div>
+  </div>
+
+  <script>
+    const responseEl = document.getElementById('response');
+    const forgiveBtn = document.getElementById('forgiveBtn');
+
+    forgiveBtn.addEventListener('click', () => {
+      responseEl.textContent = "Thank you, Nandini! I promise to do better ❤️";
+      forgiveBtn.disabled = true;
+      forgiveBtn.style.cursor = "default";
+    });
+  </script>
+</body>
+</html>
